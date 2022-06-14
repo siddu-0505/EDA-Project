@@ -46,11 +46,20 @@ pd.concat([data,feature],axis=1)
 print(data)
 
 
-
+import matplotlib.pyplot as plt
+def bargraph():
+    plt.bar(data["Sex"],data["Age"])
+    plt.xlabel("sex")
+    plt.ylabel("Age")
+    plt.title("Age vs Sex")
+    return plt.show()
+bargraph()
 
 #Violinplot
 import seaborn as sns
 def violnplt():
-    ax = sns.violinplot(x="Pclass", y="Age", hue="Sex",data=data)
-    return ax
+    ax = sns.violinplot(x="Pclass", y="Age", hue="Sex",data=data,kde=True)
+    plt.title("Age Vs Pclass")
+    return plt.show()
 violnplt()
+
