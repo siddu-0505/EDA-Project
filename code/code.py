@@ -19,3 +19,38 @@ pd.get_dummies(data["Sex"])
 print(data)
 
 print(data.head())
+
+from sklearn.preprocessing import LabelEncoder
+
+le=LabelEncoder()
+
+label=le.fit_transform(data["Sex"])
+print(label)
+
+data["Sex"]=label
+
+print(data)
+
+#OneHotEncoder
+
+from sklearn.preprocessing import OneHotEncoder
+
+encode=OneHotEncoder()
+
+Features=encode.fit_transform(data[["Embarked"]]).toarray()
+
+feature=pd.DataFrame(Features,columns=["C","Q","S"])
+
+pd.concat([data,feature],axis=1)
+
+print(data)
+
+
+
+
+#Violinplot
+import seaborn as sns
+def violnplt():
+    ax = sns.violinplot(x="Pclass", y="Age", hue="Sex",data=data)
+    return ax
+violnplt()
